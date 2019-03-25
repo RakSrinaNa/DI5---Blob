@@ -58,16 +58,22 @@ public class Graph{
 	}
 	
 	public boolean hasArc(Node ni, Node nj){
-		return true; //TODO
+		try{
+			getDistance(ni, nj);
+		}
+		catch (IllegalStateException e) {
+			return false;
+		}
+		return true;
 	}
 	
 	public int getNodeCount(){
-		return 0; //TODO
+		return this.nodes.size();
 	}
 	
 	public Collection<Node> getNodes()
 	{
-		return nodes;
+		return this.nodes;
 	}
 	
 	public static Graph parseFromPath(Path path)

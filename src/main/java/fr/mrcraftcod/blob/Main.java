@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class Main{
 	public static void main(String[] args){
-		final var graph = new Graph(6);
+		final var graph = new Graph(7);
 		graph.getNode(0).ifPresent(n0 -> {
 			graph.getNode(1).ifPresent(n1 -> graph.setUndirectionalDistance(n0, n1, 0.5));
 			graph.getNode(3).ifPresent(n3 -> graph.setUndirectionalDistance(n0, n3, 0.5));
