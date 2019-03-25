@@ -7,7 +7,9 @@ package fr.mrcraftcod.blob;
  * @since 2019-03-25
  */
 public class Node{
+
 	final int ID;
+
 	double pressure;
 	
 	public Node(int id){ID = id;}
