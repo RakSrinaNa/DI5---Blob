@@ -45,9 +45,12 @@ public class Main{
 		var count = 1;
 		var shouldStop = false;
 		
+		final var ns = graph.getNode(0).orElseThrow();
+		final var ne = graph.getNode(6).orElseThrow();
+		
 		//Loop
 		do{
-			final var pe = 0D;
+			ne.setPressure(0);
 			
 			//TODO: Calculate pressure of every node
 			
@@ -61,7 +64,7 @@ public class Main{
 			for(var ni : graph.getNodes()){
 				for(var nj : graph.getNodes()){
 					if(!Objects.equals(ni, nj)){
-						d[ni.getID()][nj.getID()] = (1 / 2D) * ((q[ni.getID()][nj.getID()] * (ni.getPressure() - nj.getPressure())) / (graph.getDistance(ni, nj) * (ps - pe))) + d[ni.getID()][nj.getID()];
+						d[ni.getID()][nj.getID()] = (1 / 2D) * ((q[ni.getID()][nj.getID()] * (ni.getPressure() - nj.getPressure())) / (graph.getDistance(ni, nj) * (ns.getPressure() - ne.getPressure()))) + d[ni.getID()][nj.getID()];
 					}
 				}
 			}
