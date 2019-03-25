@@ -7,7 +7,6 @@
 open module fr.mrcraftcod.blob {
 	requires org.slf4j;
 	requires org.apache.logging.log4j;
-	requires jcommander;
 	
 	requires java.scripting;
 }
