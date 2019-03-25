@@ -8,6 +8,6 @@ package fr.mrcraftcod.blob;
  */
 public class Main{
 	public static void main(String[] args){
-	
+		final var graph = new Graph();
 	}
 }
