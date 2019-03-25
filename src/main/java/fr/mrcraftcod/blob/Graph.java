@@ -51,7 +51,10 @@ public class Graph{
 
 	public double getDistance(Node i, Node j)
 	{
-		return this.dist[i.getID()][j.getID()];
+		final var dist = this.dist[i.getID()][j.getID()];
+		if(dist < 0)
+			throw new IllegalStateException("Distance is undefined from " + i.getID() + " to " + j.getID());
+		return dist;
 	}
 	
 	public int getNodeCount(){

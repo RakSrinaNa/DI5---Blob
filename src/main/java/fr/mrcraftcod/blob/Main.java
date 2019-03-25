@@ -50,9 +50,14 @@ public class Main{
 			
 			//TODO: Calculate pressure of every node
 			
-			for(int i = 0; i < graph.getNodeCount(); i++){
-				for(int j = 0; j < graph.getNodeCount(); j++){
-					//q[i][j] = (d[i][j]) / ();
+			for(var ni : graph.getNodes()){
+				for(var nj : graph.getNodes()){
+					q[ni.getID()][nj.getID()] = (d[ni.getID()][nj.getID()] * (ni.getPressure() - nj.getPressure())) / (graph.getDistance(ni, nj));
+				}
+			}
+			for(var ni : graph.getNodes()){
+				for(var nj : graph.getNodes()){
+					d[ni.getID()][nj.getID()] = (1/2D) * ((q[ni.getID()][nj.getID()] * (ni.getPressure() - nj.getPressure())) / (graph.getDistance(ni, nj) * (ps - pe))) + d[ni.getID()][nj.getID()];
 				}
 			}
 			
