@@ -15,7 +15,21 @@ public class Main{
 			graph.getNode(1).ifPresent(n1 -> graph.setUndirectionalDistance(n0, n1, 0.5));
 			graph.getNode(3).ifPresent(n3 -> graph.setUndirectionalDistance(n0, n3, 0.5));
 		});
-		
+
+		graph.getNode(1).ifPresent(n1 -> {
+			graph.getNode(2).ifPresent(n2 -> graph.setUndirectionalDistance(n1, n2, 0.2028));
+			graph.getNode(4).ifPresent(n4 -> graph.setUndirectionalDistance(n1, n4, 0.2942));
+		});
+		graph.getNode(3).ifPresent(n3 -> {
+			graph.getNode(2).ifPresent(n2 -> graph.setUndirectionalDistance(n3, n2, 0.2058));
+			graph.getNode(5).ifPresent(n5 -> graph.setUndirectionalDistance(n3, n5, 0.2942));
+		});
+		graph.getNode(6).ifPresent(n6 -> {
+			graph.getNode(2).ifPresent(n2 -> graph.setUndirectionalDistance(n6, n2, 0.4116));
+			graph.getNode(4).ifPresent(n4 -> graph.setUndirectionalDistance(n6, n4, 0.2942));
+			graph.getNode(5).ifPresent(n5 -> graph.setUndirectionalDistance(n6, n5, 0.2942));
+		});
+
 		//Init
 		final var rnd = new Random();
 		final var d = new double[graph.getNodeCount()][graph.getNodeCount()];
