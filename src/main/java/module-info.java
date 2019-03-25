@@ -9,4 +9,5 @@ open module fr.mrcraftcod.blob {
 	requires org.apache.logging.log4j;
 	
 	requires java.scripting;
+	requires org.apache.commons.lang3;
 }
