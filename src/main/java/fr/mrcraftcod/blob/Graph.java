@@ -57,6 +57,10 @@ public class Graph{
 		return dist;
 	}
 	
+	public boolean hasArc(Node ni, Node nj){
+		return true; //TODO
+	}
+	
 	public int getNodeCount(){
 		return 0; //TODO
 	}

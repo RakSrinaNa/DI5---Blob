@@ -57,21 +57,26 @@ public class Main{
 			for(var ni : graph.getNodes()){
 				for(var nj : graph.getNodes()){
 					if(!Objects.equals(ni, nj)){
-						q[ni.getID()][nj.getID()] = (d[ni.getID()][nj.getID()] * (ni.getPressure() - nj.getPressure())) / (graph.getDistance(ni, nj));
+						if(graph.hasArc(ni, nj)){
+							q[ni.getID()][nj.getID()] = (d[ni.getID()][nj.getID()] * (ni.getPressure() - nj.getPressure())) / (graph.getDistance(ni, nj));
+						}
 					}
 				}
 			}
 			for(var ni : graph.getNodes()){
 				for(var nj : graph.getNodes()){
 					if(!Objects.equals(ni, nj)){
-						d[ni.getID()][nj.getID()] = (1 / 2D) * ((q[ni.getID()][nj.getID()] * (ni.getPressure() - nj.getPressure())) / (graph.getDistance(ni, nj) * (ns.getPressure() - ne.getPressure()))) + d[ni.getID()][nj.getID()];
+						if(graph.hasArc(ni, nj)){
+							d[ni.getID()][nj.getID()] = (1 / 2D) * ((q[ni.getID()][nj.getID()] * (ni.getPressure() - nj.getPressure())) / (graph.getDistance(ni, nj) * (ns.getPressure() - ne.getPressure()))) + d[ni.getID()][nj.getID()];
+						}
 					}
 				}
+				
+				count++;
+				shouldStop = count > 10000;
 			}
-			
-			count++;
-			shouldStop = count > 10000;
+			while(!shouldStop){
+				;
+			}
 		}
-		while(!shouldStop);
 	}
-}
