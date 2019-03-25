@@ -71,12 +71,11 @@ public class Main{
 						}
 					}
 				}
-				
-				count++;
-				shouldStop = count > 10000;
 			}
-			while(!shouldStop){
-				;
-			}
+			
+			count++;
+			shouldStop = count > 10000;
 		}
+		while(!shouldStop);
 	}
+}
