@@ -5,10 +5,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /**
@@ -35,7 +32,11 @@ public class Graph{
 		}
 	}
 	public Graph(int size) {
-		super((Node[])IntStream.range(0, size).mapToObj(i->new Node(i)).toArray());
+		this((Node[])IntStream.range(0, size).mapToObj(Node::new).toArray(Node[]::new));
+	}
+	
+	public Optional<Node> getNode(int id){
+		return this.getNodes().stream().filter(n -> Objects.equals(n.getID(), id)).findAny();
 	}
 
 
@@ -51,6 +52,10 @@ public class Graph{
 	public double getDistance(Node i, Node j)
 	{
 		return this.dist[i.getID()][j.getID()];
+	}
+	
+	public int getNodeCount(){
+		return 0; //TODO
 	}
 	
 	public Collection<Node> getNodes()

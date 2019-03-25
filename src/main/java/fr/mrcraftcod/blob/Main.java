@@ -1,5 +1,7 @@
 package fr.mrcraftcod.blob;
 
+import java.util.Random;
+
 /**
  * Created by mrcraftcod (MrCraftCod - zerderr@gmail.com) on 2019-03-25.
  *
@@ -8,16 +10,41 @@ package fr.mrcraftcod.blob;
  */
 public class Main{
 	public static void main(String[] args){
-		Node n0 = new Node(0);
-		Node n1 = new Node(1);
-		Node n2 = new Node(2);
-		Node n3 = new Node(3);
-		Node n4 = new Node(4);
-		Node n5 = new Node(5);
-		Node n6 = new Node(6);
-
-		final var graph = new Graph(n0, n1, n2,n3, n4, n5, ,6);
-		graph.setUndirectionalDistance(1, 2, 0.5d);
-
+		final var graph = new Graph(6);
+		graph.getNode(0).ifPresent(n0 -> {
+			graph.getNode(1).ifPresent(n1 -> graph.setUndirectionalDistance(n0, n1, 0.5));
+			graph.getNode(3).ifPresent(n3 -> graph.setUndirectionalDistance(n0, n3, 0.5));
+		});
+		
+		//Init
+		final var rnd = new Random();
+		final var d = new double[graph.getNodeCount()][graph.getNodeCount()];
+		final var q = new double[graph.getNodeCount()][graph.getNodeCount()];
+		for(int i = 0; i < graph.getNodeCount(); i++){
+			for(int j = 0; j < graph.getNodeCount(); j++){
+				d[i][j] = rnd.nextDouble();
+				q[i][j] = 0D;
+			}
+		}
+		graph.getNodes().forEach(n -> n.setPressure(0D));
+		var count = 1;
+		var shouldStop = false;
+		
+		//Loop
+		do{
+			final var pe = 0D;
+			
+			//TODO: Calculate pressure of every node
+			
+			for(int i = 0; i < graph.getNodeCount(); i++){
+				for(int j = 0; j < graph.getNodeCount(); j++){
+					//q[i][j] = (d[i][j]) / ();
+				}
+			}
+			
+			count++;
+			shouldStop = count > 10000;
+		}
+		while(!shouldStop);
 	}
 }
